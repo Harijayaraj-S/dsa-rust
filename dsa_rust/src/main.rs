@@ -2,6 +2,7 @@
 
 mod basic;
 mod condition_loop;
+mod basic_array;
 
 fn main() {
     println!("{}", basic::odd_or_even(10));
