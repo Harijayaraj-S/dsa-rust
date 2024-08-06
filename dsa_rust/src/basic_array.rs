@@ -39,6 +39,19 @@ impl RunnungSumSolution {
     }
 }
 
+// Leedcode 1672. Richest Customer Wealth
+struct MaximumWealthSolution;
+impl MaximumWealthSolution {
+    pub fn maximum_wealth(accounts: Vec<Vec<i32>>) -> i32 {
+        accounts
+        .iter()
+        .map(|i| i.iter().sum())
+        .max()
+        .unwrap()
+    }
+}
+
+
 mod tests {
     use super::*;
 
@@ -78,6 +91,24 @@ mod tests {
         assert_eq!(
             RunnungSumSolution::running_sum([1, 1, 1, 1, 1].to_vec()),
             [1, 2, 3, 4, 5].to_vec()
+        );
+    }
+
+    #[test]
+    fn test_maximum_wealth() {
+        assert_eq!(
+            MaximumWealthSolution::maximum_wealth( [[1,2,3].to_vec(),[3,2,1].to_vec()].to_vec()),
+            6
+        );
+
+        assert_eq!(
+            MaximumWealthSolution::maximum_wealth([[1,5].to_vec(),[7,3].to_vec(),[3,5].to_vec()].to_vec()),
+            10
+        );
+
+        assert_eq!(
+            MaximumWealthSolution::maximum_wealth([[2,8,7].to_vec(),[7,1,3].to_vec(),[1,9,5].to_vec()].to_vec()),
+            17
         );
     }
 }
