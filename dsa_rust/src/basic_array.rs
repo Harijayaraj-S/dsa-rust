@@ -22,6 +22,7 @@ impl ConcatenationSolution {
         ans
     }
 }
+
 // Leedcode 1480. Running Sum of 1d Array
 struct RunnungSumSolution;
 impl RunnungSumSolution {
@@ -43,14 +44,23 @@ impl RunnungSumSolution {
 struct MaximumWealthSolution;
 impl MaximumWealthSolution {
     pub fn maximum_wealth(accounts: Vec<Vec<i32>>) -> i32 {
-        accounts
-        .iter()
-        .map(|i| i.iter().sum())
-        .max()
-        .unwrap()
+        accounts.iter().map(|i| i.iter().sum()).max().unwrap()
     }
 }
 
+// leedcode 1470. Shuffle the Array
+struct ShuffleArraySolution;
+impl ShuffleArraySolution {
+    pub fn shuffle(nums: Vec<i32>, n: i32) -> Vec<i32> {
+        let n = n as usize;
+        let mut ans = Vec::new();
+        for i in 0..n {
+            ans.push(nums[i]);
+            ans.push(nums[i + n]);
+        }
+        ans
+    }
+}
 
 mod tests {
     use super::*;
@@ -97,18 +107,37 @@ mod tests {
     #[test]
     fn test_maximum_wealth() {
         assert_eq!(
-            MaximumWealthSolution::maximum_wealth( [[1,2,3].to_vec(),[3,2,1].to_vec()].to_vec()),
+            MaximumWealthSolution::maximum_wealth(
+                [[1, 2, 3].to_vec(), [3, 2, 1].to_vec()].to_vec()
+            ),
             6
         );
 
         assert_eq!(
-            MaximumWealthSolution::maximum_wealth([[1,5].to_vec(),[7,3].to_vec(),[3,5].to_vec()].to_vec()),
+            MaximumWealthSolution::maximum_wealth(
+                [[1, 5].to_vec(), [7, 3].to_vec(), [3, 5].to_vec()].to_vec()
+            ),
             10
         );
 
         assert_eq!(
-            MaximumWealthSolution::maximum_wealth([[2,8,7].to_vec(),[7,1,3].to_vec(),[1,9,5].to_vec()].to_vec()),
+            MaximumWealthSolution::maximum_wealth(
+                [[2, 8, 7].to_vec(), [7, 1, 3].to_vec(), [1, 9, 5].to_vec()].to_vec()
+            ),
             17
+        );
+    }
+
+    #[test]
+    fn test_shuffle() {
+        assert_eq!(
+            ShuffleArraySolution::shuffle([2, 5, 1, 3, 4, 7].to_vec(), 3),
+            [2, 3, 5, 4, 1, 7].to_vec()
+        );
+
+        assert_eq!(
+            ShuffleArraySolution::shuffle([1, 2, 3, 4, 4, 3, 2, 1].to_vec(), 4),
+            [1, 4, 2, 3, 3, 2, 4, 1].to_vec()
         );
     }
 }
