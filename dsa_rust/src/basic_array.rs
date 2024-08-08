@@ -62,6 +62,25 @@ impl ShuffleArraySolution {
     }
 }
 
+// 1431. Kids With the Greatest Number of Candies
+struct GreatestNumberCandiesSolution;
+impl GreatestNumberCandiesSolution{
+    pub fn kids_with_candies(candies: Vec<i32>, extra_candies: i32) -> Vec<bool> {
+        let max = candies.iter().max().unwrap();
+        let mut candiesiter = candies.iter();
+        let mut result:Vec<bool> = Vec::new();
+        while let Some(candy) = candiesiter.next() {
+            if candy + extra_candies >= *max {
+                result.push(true);
+            }
+            else {
+                result.push(false);
+            }
+        }
+        result
+    }
+}
+
 mod tests {
     use super::*;
 
