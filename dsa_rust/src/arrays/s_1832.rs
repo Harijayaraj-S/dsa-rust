@@ -27,6 +27,7 @@ impl Solution {
 }
 
 mod tests {
+    use super::*;
 
     #[test]
     fn test_num_identical_pairs() {
