@@ -1,0 +1,1 @@
+## This repo contains data structure problems that solved with rust
