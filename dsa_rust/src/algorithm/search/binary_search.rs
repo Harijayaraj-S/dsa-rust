@@ -92,8 +92,35 @@ fn first_and_last_position(arr: Vec<i64>, target: i64) -> (Option<usize>, Option
     (first, last)
 }
 
+/*2. Find the Smallest Number Greater Than or Equal to Target
+Given a sorted array, find the index of the smallest number that is greater than or equal to the target.
+
+Example:
+Input: nums = [1, 3, 5, 7, 9], target = 6
+Output: 3
+*/
+
+fn smallest_num_greater_than_or_equal(arr: Vec<i64>, target: i64) -> Option<usize> {
+    let (mut start, mut end) = (0, arr.len() as isize - 1);
+    let mut ans = None;
+
+    while start <= end {
+        let mid = start + (end - start) / 2;
+        if arr[mid as usize] >= target {
+            ans = Some(mid as usize);
+            end = mid - 1;
+        } else {
+            start = mid + 1;
+        }
+    }
+
+    ans
+}
+
 mod test {
-    use crate::algorithm::search::binary_search::{algo_binary_search, first_and_last_position};
+    use crate::algorithm::search::binary_search::{
+        algo_binary_search, first_and_last_position, smallest_num_greater_than_or_equal,
+    };
 
     #[test]
     fn test_algo_binary_search() {
@@ -122,6 +149,22 @@ mod test {
         assert_eq!(
             first_and_last_position(vec![1, 2, 3, 3, 3, 3, 5, 8], 1),
             (Some(0), Some(0))
+        );
+    }
+
+    #[test]
+    fn test_smallest_num_greater_than_or_equal() {
+        assert_eq!(
+            smallest_num_greater_than_or_equal(vec![1, 3, 5, 7, 9], 6),
+            Some(3)
+        );
+        assert_eq!(
+            smallest_num_greater_than_or_equal(vec![2, 4, 6, 8, 10], 5),
+            Some(2)
+        );
+        assert_eq!(
+            smallest_num_greater_than_or_equal(vec![10, 20, 30], 10),
+            Some(0)
         );
     }
 }
