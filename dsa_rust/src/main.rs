@@ -1,10 +1,11 @@
 // MAIN
 
+mod algorithm;
 mod arrays;
 mod basic;
+mod basics;
 mod concepts;
 mod condition_loop;
-mod algorithm;
 
 fn main() {
     println!("{}", basic::odd_or_even(10));
